@@ -3,8 +3,15 @@
 
 using namespace std;
 
-string GenerateMessage();
+// ######################################################################
+//                      Function declarations
+// ######################################################################
+string GenerateMessage(char *args[]);
 void WriteToFile(string text);
+
+// ######################################################################
+//                      MAIN FUNCTION
+// ######################################################################
 
 int main(int argc, char *argv[])
 {
@@ -12,7 +19,7 @@ int main(int argc, char *argv[])
     if (argc > 1)
     {
 
-        message = GenerateMessage();
+        message = GenerateMessage(argv);
         WriteToFile(message);
     }
     return 0;
@@ -22,15 +29,15 @@ int main(int argc, char *argv[])
 //                 Functions
 // #####################################################################
 
-string GenerateMessage()
+string GenerateMessage(char *args[])
 {
     string messageType;
     string message;
     string dueDate;
 
-    messageType = __argv[1];
-    message = __argv[2];
-    dueDate = __argv[3];
+    messageType = args[1];
+    message = args[2];
+    dueDate = args[3];
 
     return messageType + ": " + message + " Due: " + dueDate;
 }
