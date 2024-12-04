@@ -1,13 +1,14 @@
 #include <iostream>
 #include <fstream>
-
-using namespace std;
+#include <string>
 
 // ######################################################################
 //                      Function declarations
 // ######################################################################
-string GenerateMessage(char *args[]);
-void WriteToFile(string text);
+void parseArguments();
+void displayData();
+void writeToFile(std::string text);
+
 
 // ######################################################################
 //                      MAIN FUNCTION
@@ -15,13 +16,9 @@ void WriteToFile(string text);
 
 int main(int argc, char *argv[])
 {
-    string message;
-    if (argc > 1)
-    {
+    parseArguments();
+    
 
-        message = GenerateMessage(argv);
-        WriteToFile(message);
-    }
     return 0;
 }
 
@@ -29,25 +26,16 @@ int main(int argc, char *argv[])
 //                 Functions
 // #####################################################################
 
-string GenerateMessage(char *args[])
+void parseArguments(char *argv[])
 {
-    string messageType;
-    string message;
-    string dueDate;
-
-    messageType = args[1];
-    message = args[2];
-    dueDate = args[3];
-
-    return messageType + ": " + message + " Due: " + dueDate;
 }
 
-void WriteToFile(string text)
+void writeToFile(std::string text)
 {
-    ofstream file1;
-    file1.open("noteit.txt", ios::app);
-    file1.seekp(0, ios::end);
+    std::ofstream file1;
+    file1.open("noteit.txt", std::ios::app);
+    file1.seekp(0, std::ios::end);
 
-    file1 << text << endl;
+    file1 << text << std::endl;
     file1.close();
 }
